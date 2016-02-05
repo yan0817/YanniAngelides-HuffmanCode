@@ -28,6 +28,14 @@ public class HuffmanNode implements Comparable
 		count = a.getCount() + b.getCount();
 	}
 	
+	public HuffmanNode(String val, int c)
+	{
+		left = null;
+		right = null;
+		value = val;
+		count = c;
+	}
+	
 	public int getCount()
 	{
 		return count;
@@ -71,5 +79,11 @@ public class HuffmanNode implements Comparable
 	public int compareTo(Object node)
 	{
 		return count - (((HuffmanNode)node).getCount());
+	}
+	
+	public String toString()
+	{
+		String str = "Value: " + value + " Count: " + count;
+		return str;
 	}
 }

@@ -14,5 +14,9 @@ public class HuffmanRunner
 		HuffmanNode node4 = new HuffmanNode(node, node3);
 		System.out.println(node.compareTo(node2));
 		System.out.println(node.compareTo(node3));
+		while(que.peek() != null)
+		{
+			System.out.println(que.poll());
+		}	
 	}
 }
