@@ -1,3 +1,5 @@
+import java.util.PriorityQueue;
+import java.util.HashMap;
 /**
 Class that tests the methods of HuffmanNode
 @author Yanni Angelides
@@ -14,9 +16,6 @@ public class HuffmanRunner
 		HuffmanNode node4 = new HuffmanNode(node, node3);
 		System.out.println(node.compareTo(node2));
 		System.out.println(node.compareTo(node3));
-		while(que.peek() != null)
-		{
-			System.out.println(que.poll());
-		}	
+		HuffmanTree tree = new HuffmanTree("racecar racecar");	
 	}
 }

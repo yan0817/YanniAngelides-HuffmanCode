@@ -1,4 +1,5 @@
-
+import java.util.PriorityQueue;
+import java.util.HashMap;
 /**
 Creating Huffman Code Program
 @author Yanni Angelides

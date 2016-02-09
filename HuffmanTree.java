@@ -24,35 +24,34 @@ parent, so in the end everything is connected.
 public class HuffmanTree
 {
 	private HuffmanNode root;
-	private String sentence;
-	private HashMap<Character, Integer> map;
+	private HashMap<String, Integer> map;
 	private PriorityQueue<HuffmanNode> que;
 	
 	//Constructor
 	public HuffmanTree(String str)
 	{
-		sentence = str;
-		//init(str);
+		createTree(str);
 	}
 	
 	//method that initializes the string and puts the iterates through the initially sentence to find all the characters and their frequencies
 	
 	/**
 	Uses helper methods to create map of the values and count of the different characters in sentence, creates a Priority Queue using that map, then uses the PriorityQueue to create HashTree
-	private void init(String str);
-	{
-		makeMap();
-		makeQueue();
-		makeTree();
-	}
 	*/
+	public void createTree(String sentence)
+	{
+		this.makeMap(sentence);
+		this.makeQueue();
+		//makeTree();
+	}
 	
 	public void makeMap(String str)
 	{
-		map = new HashMap<Character,Integer>();
+		map = new HashMap<String, Integer>();
 		for(int i = 0; i < str.length(); i++)
 		{
-			char let = str.charAt(i);
+			char a = str.charAt(i);
+			String let = a.toString();
 			if(map.containsValue(let))
 			{
 				int save = map.get(let);
@@ -72,25 +71,80 @@ public class HuffmanTree
 		Object[] arr = map.keySet().toArray();
 		for (int i = 0; i < arr.length; i++)
 		{
-			HuffmanNode node = new HuffmanNode(((String)arr[i]), map.get(((char)arr[i])));
+			HuffmanNode node = new HuffmanNode(arr[i].toString(), map.get(arr[i]));
 			que.offer(node);
 		}
+		while(que.peek() != null)
+		{
+			System.out.println(que.poll());
+		}
+	}
+	
+	public void makeTree()
+	{
+		while (que.size() > 1)
+		{
+			HuffmanNode node1 = que.poll();
+			HuffmanNode node2 = que.poll();
+			HuffmanNode combo = new HuffmanNode(node1, node2);
+			que.offer(combo);
+		}
+		root = que.poll();
 	}
 	
 	/**
 	Creates a String of 1s and 0s that represents a the String parameter based upon the original HuffmanTree 
-	
+	*/
 	public String encode(String str)
 	{
-		
+		String code = "";
+		for (int i = 0; i < str.length(); i++)
+		{
+			code += helper(""+str.charAt(i));
+		}
 	}
-	*/
+	
+	public boolean contains(String a, String b)
+	{
+		for(int i = 0; i < b.length(); i++)
+		{
+			if(a.equals(""+b.charAt(i)) == true)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public String helper(String str)
+	{
+		if(this.getRight() == null && this.getLeft() == null)
+		{
+			return "";
+		}
+		if(contains(str, this.getRight().getValue()))
+		{
+			return "1" + this.getRight().helper(str);
+		}
+		else
+		{
+			return "0" + this.getLeft().helper(str);
+		}
+	}
 	
 	/**
 	Takes in a String of ones and zeros and using the HuffmanTree creates a new string of actual letters that those ones and zeros encode for 
 	public void decode(String str)
+	*/
+	pubic String decode(String str)
 	{
-	
+		if(this.getRight() == null && this.getLeft() == null)
+		{
+			return this.getValue();
+		}
+		if
+		{
+			
+		}	
 	}
-	*/ 
 }
