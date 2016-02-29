@@ -16,6 +16,14 @@ public class HuffmanRunner
 		HuffmanNode node4 = new HuffmanNode(node, node3);
 		System.out.println(node.compareTo(node2));
 		System.out.println(node.compareTo(node3));
-		HuffmanTree tree = new HuffmanTree("racecar racecar");	
+		HuffmanTree tree = new HuffmanTree("racecar racecar");
+		String code = tree.encode("racecar race");
+		System.out.println(code);
+		System.out.println(tree.decode(code));
+		HuffmanTree tree2 = new HuffmanTree("aaaabbc ddeeffgghijkklmnoopq rrsttuvwx xyyyyyyyyz!!!");
+		String code2 = tree2.encode("yanni is the best coder ever!");
+		System.out.println(code2);
+		System.out.println(tree2.decode(code2));
+			
 	}
 }
